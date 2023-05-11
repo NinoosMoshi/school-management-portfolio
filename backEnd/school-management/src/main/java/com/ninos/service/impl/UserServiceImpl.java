@@ -6,7 +6,7 @@ import com.ninos.entity.Role;
 import com.ninos.entity.User;
 import com.ninos.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(String email, String password) {
-        String encodePassword = passwordEncoder.encode(password);
+//        String encodePassword = passwordEncoder.encode(password);
+        String encodePassword = password;
         return userDao.save(new User(email, encodePassword));
     }
 
